@@ -17,8 +17,8 @@ import {
 } from 'ngx-bootstrap/datepicker';
 import { CustomPaginationModule } from './custom-pagination/custom-pagination.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { UploaderComponent } from './uploader/uploader/uploader.component';
 import { DropzoneDirective } from './dropzone/dropzone.directive';
+import { UploaderComponent } from './uploader/uploader/uploader.component';
 import { UploadTaskComponent } from './uploader/upload-task/upload-task.component';
 @NgModule({
   declarations: [UploaderComponent, UploadTaskComponent],

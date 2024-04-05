@@ -6,11 +6,11 @@ import { Observable } from 'rxjs';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { ApiResponse } from '../model/api-response';
 import { User } from '../model/user';
+import { environment } from 'src/environments/environment';
 
-const AUTH_API = 'http://localhost:8080/api/v1/auth/';
-const USER_API = 'http://localhost:8080/api/v1/users/';
+const AUTH_API = environment.apiUrl + '/auth/';
+const USER_API = environment.apiUrl + '/users/';
 const TOKEN_KEY = 'auth-token';
-const USER_KEY = 'auth-user';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),

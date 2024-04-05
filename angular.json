@@ -126,6 +126,23 @@
               "src/**/*.html"
             ]
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "dreams-rent:build:production",
+              "serveTarget": "dreams-rent:serve:production"
+            },
+            "development": {
+              "buildTarget": "dreams-rent:build:development",
+              "serveTarget": "dreams-rent:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

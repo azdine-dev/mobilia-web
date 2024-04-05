@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Bus } from './bus.model';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { Bus } from './bus.model';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -11,7 +12,7 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class BusService {
-  private apiUrl = 'http://localhost:8080/api/v1/buses';
+  private apiUrl = environment.apiUrl + 'buses';
 
   constructor(private http: HttpClient) {}
 

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "mobilia-eb121": {
+      "hosting": {
+        "dreams-rent": [
+          "mobilia-eb121"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "mobilia-eb121"
+  }
+}

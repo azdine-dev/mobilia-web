@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+  apiUrl: 'https://car-rental-api-xbcx.onrender.com/api/v1/',
   firebase: {
     apiKey: 'AIzaSyCvij_CVfhGLZe0yNfYcW6qfFbFCrCUyUc',
     authDomain: 'mobilia-eb121.firebaseapp.com',
