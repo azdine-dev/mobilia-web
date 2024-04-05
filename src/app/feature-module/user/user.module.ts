@@ -22,7 +22,10 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 
 import { UserMessagesComponent } from './user-messages/user-messages.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { ListboxModule } from 'primeng/listbox';
+import { DialogModule } from 'primeng/dialog';
+import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,11 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     UserRoutingModule,
-    SharedModule
-  ]
+    SharedModule,
+    ListboxModule,
+    ReactiveFormsModule,
+    DialogModule,
+    NgbCarousel,
+  ],
 })
-export class UserModule { }
+export class UserModule {}

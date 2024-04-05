@@ -8,7 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { LightboxModule } from 'ngx-lightbox';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
-import {MatSliderModule} from '@angular/material/slider';
+import { MatSliderModule } from '@angular/material/slider';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSortModule } from '@angular/material/sort';
 import {
@@ -17,8 +17,11 @@ import {
 } from 'ngx-bootstrap/datepicker';
 import { CustomPaginationModule } from './custom-pagination/custom-pagination.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { UploaderComponent } from './uploader/uploader/uploader.component';
+import { DropzoneDirective } from './dropzone/dropzone.directive';
+import { UploadTaskComponent } from './uploader/upload-task/upload-task.component';
 @NgModule({
-  declarations: [],
+  declarations: [UploaderComponent, UploadTaskComponent],
   imports: [
     CommonModule,
     materialModule,
@@ -36,6 +39,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     BsDatepickerModule.forRoot(),
     CustomPaginationModule,
     MatTooltipModule,
+    DropzoneDirective,
   ],
   exports: [
     CommonModule,
@@ -54,6 +58,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatSortModule,
     CustomPaginationModule,
     MatTooltipModule,
+    DropzoneDirective,
+    UploadTaskComponent,
+    UploaderComponent,
   ],
   providers: [DatePipe, BsDatepickerConfig],
 })

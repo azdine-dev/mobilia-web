@@ -1,0 +1,5 @@
+.bus-image {
+  width: 50px; /* Set your desired width */
+  height: 40px; /* Set your desired height */
+  object-fit: cover;
+}

@@ -1,0 +1,32 @@
+<div
+  class="dropzone"
+  dropzone
+  (hovered)="toggleHover($event)"
+  (dropped)="onDrop($event)"
+  [class.hovering]="isHovering"
+>
+  <p>Drag and Drop an Image</p>
+
+  <div class="file">
+    <label class="file-label">
+      <input class="file-input" type="file" (change)="onDrop($event.target)" />
+
+      <span class="file-cta">
+        <span class="file-icon">
+          <i class="fa fa-upload"></i>
+        </span>
+      </span>
+    </label>
+  </div>
+</div>
+<hr />
+<!-- <h3 class="uploads">Uploads</h3> -->
+<div class="row">
+  <div *ngFor="let file of files" class="col-md-2">
+    <upload-task
+      [file]="file"
+      (fileRemoved)="onFileRemoved($event)"
+      (uploadCompleted)="onUploadCompleted($event)"
+    ></upload-task>
+  </div>
+</div>

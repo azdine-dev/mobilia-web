@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { routes } from 'src/app/shared/routes/routes';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/shared/services/auth/authservice';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -30,11 +30,10 @@ export class ResetPasswordComponent {
       this.form.valid
     ) {
       this.confirmPassword = true;
-      this.auth.signin();
+      // this.auth.signin();
     } else {
       this.confirmPassword = false;
       this.auth.forgotpassword();
     }
   }
-  
 }

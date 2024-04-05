@@ -1,85 +1,112 @@
-<app-header></app-header>
+<app-header [authenticatedUser]="authenticatedUser"></app-header>
 
 <!-- Breadscrumb Section -->
 <div class="breadcrumb-bar">
-    <div class="container">
-        <div class="row align-items-center text-center">
-            <div class="col-md-12 col-12">
-                <h2 class="breadcrumb-title">{{page | titlecase}}</h2>
-                <nav aria-label="breadcrumb" class="page-breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a [routerLink]="routes.home">Home</a></li>
-                        <li class="breadcrumb-item" aria-current="page"
-                            [class.active]="page === 'User Bookings' || page === 'User Settings' || page === 'user dashboard' || page === 'user review' || page === 'user wishlist' || page === 'user messages' || page === 'user wallet' || page === 'user payment'">
-                            {{page | titlecase}}</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row align-items-center text-center">
+      <div class="col-md-12 col-12">
+        <h2 class="breadcrumb-title">{{ page | titlecase }}</h2>
+        <nav aria-label="breadcrumb" class="page-breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a [routerLink]="routes.home">Home</a>
+            </li>
+            <li
+              class="breadcrumb-item"
+              aria-current="page"
+              [class.active]="
+                page === 'User Bookings' ||
+                page === 'User Settings' ||
+                page === 'user dashboard' ||
+                page === 'user review' ||
+                page === 'user wishlist' ||
+                page === 'user messages' ||
+                page === 'user wallet' ||
+                page === 'user payment'
+              "
+            >
+              {{ page | titlecase }}
+            </li>
+          </ol>
+        </nav>
+      </div>
     </div>
+  </div>
 </div>
 <!-- /Breadscrumb Section -->
 
 <!-- Dashboard Menu -->
 <div class="dashboard-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="dashboard-menu">
-                    <ul>
-                        <li>
-                            <a [routerLink]="routes.userDashboard" routerLinkActive="active">
-                                <img src="assets/img/icons/dashboard-icon.svg" alt="Icon">
-                                <span>Dashboard</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a [routerLink]="routes.userBookings" [ngClass]="{'active': customRouteBookings == true}">
-                                <img src="assets/img/icons/booking-icon.svg" alt="Icon">
-                                <span>My Bookings</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a [routerLink]="routes.userReview" routerLinkActive="active">
-                                <img src="assets/img/icons/review-icon.svg" alt="Icon">
-                                <span>Reviews</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a [routerLink]="routes.userWishlist" routerLinkActive="active">
-                                <img src="assets/img/icons/wishlist-icon.svg" alt="Icon">
-                                <span>Wishlist</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a [routerLink]="routes.userMessages" routerLinkActive="active">
-                                <img src="assets/img/icons/message-icon.svg" alt="Icon">
-                                <span>Messages</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a [routerLink]="routes.userWallet" routerLinkActive="active">
-                                <img src="assets/img/icons/wallet-icon.svg" alt="Icon">
-                                <span>My Wallet</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a [routerLink]="routes.userPayment" routerLinkActive="active">
-                                <img src="assets/img/icons/payment-icon.svg" alt="Icon">
-                                <span>Payments</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a [routerLink]="routes.userSettings" [ngClass]="{'active': customRouteSettings == true}">
-                                <img src="assets/img/icons/settings-icon.svg" alt="Icon">
-                                <span>Settings</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="dashboard-menu">
+          <ul>
+            <li>
+              <a [routerLink]="routes.userDashboard" routerLinkActive="active">
+                <img src="assets/img/icons/dashboard-icon.svg" alt="Icon" />
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li *ngIf="hasRole('AGENCY')">
+              <a [routerLink]="routes.userBusList" routerLinkActive="active">
+                <img src="assets/img/icons/car-icon-03.svg" alt="Icon" />
+                <span>Buses Management</span>
+              </a>
+            </li>
+            <li>
+              <a
+                [routerLink]="routes.userBookings"
+                [ngClass]="{ active: customRouteBookings == true }"
+              >
+                <img src="assets/img/icons/booking-icon.svg" alt="Icon" />
+                <span>My Bookings</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="routes.userReview" routerLinkActive="active">
+                <img src="assets/img/icons/review-icon.svg" alt="Icon" />
+                <span>Reviews</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="routes.userWishlist" routerLinkActive="active">
+                <img src="assets/img/icons/wishlist-icon.svg" alt="Icon" />
+                <span>Wishlist</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="routes.userMessages" routerLinkActive="active">
+                <img src="assets/img/icons/message-icon.svg" alt="Icon" />
+                <span>Messages</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="routes.userWallet" routerLinkActive="active">
+                <img src="assets/img/icons/wallet-icon.svg" alt="Icon" />
+                <span>My Wallet</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="routes.userPayment" routerLinkActive="active">
+                <img src="assets/img/icons/payment-icon.svg" alt="Icon" />
+                <span>Payments</span>
+              </a>
+            </li>
+            <li>
+              <a
+                [routerLink]="routes.userSettings"
+                [ngClass]="{ active: customRouteSettings == true }"
+              >
+                <img src="assets/img/icons/settings-icon.svg" alt="Icon" />
+                <span>Settings</span>
+              </a>
+            </li>
+          </ul>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 <!-- /Dashboard Menu -->
 

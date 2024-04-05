@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { routes } from 'src/app/shared/routes/routes';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { TokenService } from 'src/app/shared/services/auth/token.service';
 import { CommonService } from 'src/app/shared/services/common/common.service';
 import { routerlink } from 'src/app/shared/services/model/model';
+import { User } from 'src/app/shared/services/model/user';
 
 @Component({
   selector: 'app-user',
@@ -16,8 +19,15 @@ export class UserComponent {
   last = '';
   customRouteBookings = false;
   customRouteSettings = false;
+  authenticatedUser: User = {};
+  token: string | null = '';
 
-  constructor(private common: CommonService, public router: Router) {
+  constructor(
+    private common: CommonService,
+    private authService: AuthService,
+    private tokenService: TokenService,
+    private router: Router
+  ) {
     this.common.base.subscribe((res: string) => {
       this.base = res?.replaceAll('-', ' ');
     });
@@ -34,6 +44,13 @@ export class UserComponent {
       if (event instanceof NavigationEnd) {
         this.routesActive();
       }
+    });
+
+    this.token = this.tokenService.getToken();
+    this.authService.getUser(this.token as string).subscribe({
+      next: (res) => {
+        this.authenticatedUser = res.data;
+      },
     });
   }
   ngOnInit() {
@@ -57,5 +74,11 @@ export class UserComponent {
       this.customRouteBookings = false;
       this.customRouteSettings = false;
     }
+  }
+
+  hasRole(role: string): boolean {
+    return (
+      this.authenticatedUser?.roles?.some((r) => r.roleName === role) ?? false
+    );
   }
 }

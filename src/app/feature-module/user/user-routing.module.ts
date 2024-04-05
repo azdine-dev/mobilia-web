@@ -76,6 +76,10 @@ const routes: Routes = [
         loadChildren: () =>
           import('./settings/settings.module').then((m) => m.SettingsModule),
       },
+      {
+        path: 'bus',
+        loadChildren: () => import('./bus/bus.module').then((m) => m.BusModule),
+      },
     ],
   },
 ];

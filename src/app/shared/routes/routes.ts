@@ -125,6 +125,16 @@ export class routes {
   public static get userDashboard(): string {
     return this.user + '/user-dashboard';
   }
+  public static get userBus(): string {
+    return this.user + '/bus';
+  }
+  public static get userAddBus(): string {
+    return this.user + '/bus/add';
+  }
+  public static get userBusList(): string {
+    return this.user + '/bus/list';
+  }
+
   public static get userIntegration(): string {
     return this.user + '/settings/user-integration';
   }
