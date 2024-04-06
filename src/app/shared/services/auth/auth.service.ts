@@ -3,13 +3,13 @@ import { Router } from '@angular/router';
 import { routes } from '../../routes/routes';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { ApiResponse } from '../model/api-response';
 import { User } from '../model/user';
 import { environment } from 'src/environments/environment';
 
-const AUTH_API = environment.apiUrl + '/auth/';
-const USER_API = environment.apiUrl + '/users/';
+const AUTH_API = environment.apiUrl + 'auth/';
+const USER_API = environment.apiUrl + 'users/';
 const TOKEN_KEY = 'auth-token';
 
 const httpOptions = {
