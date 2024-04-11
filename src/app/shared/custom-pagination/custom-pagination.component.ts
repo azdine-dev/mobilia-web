@@ -43,8 +43,6 @@ export class CustomPaginationComponent {
     });
   }
 
-   
-
   public getMoreData(event: string): void {
     if (event == 'next') {
       this.currentPage++;

@@ -1,6 +1,8 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:8080/api/v1/',
+  // apiUrl: 'https://car-rental-api-xbcx.onrender.com/api/v1/',
+
   firebase: {
     apiKey: 'AIzaSyCvij_CVfhGLZe0yNfYcW6qfFbFCrCUyUc',
     authDomain: 'mobilia-eb121.firebaseapp.com',

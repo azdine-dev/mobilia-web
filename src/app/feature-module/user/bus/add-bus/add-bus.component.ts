@@ -11,7 +11,7 @@ import { Observable, map, startWith } from 'rxjs';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { UploaderComponent } from 'src/app/shared/uploader/uploader/uploader.component';
 import { BusService } from 'src/app/feature-module/_services/bus/bus.service';
-import { Bus } from 'src/app/feature-module/_services/bus/bus.model';
+import { Bus, BusDto } from 'src/app/feature-module/_services/bus/bus.model';
 import { Router } from '@angular/router';
 import { routes } from 'src/app/shared/routes/routes';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -132,13 +132,17 @@ export class AddBusComponent {
       try {
         const uploadedUrls = await this.uploadFiles();
         console.log('Uploaded URLs:', uploadedUrls);
-        const newBus: Bus = {
+        const amenitiesArray = this.busFormStep2
+          .get('amenities')
+          ?.value.split(',')
+          .map((item: string) => item.trim());
+        const newBus: BusDto = {
           name: this.busFormStep1.get('name')?.value,
           busNumber: this.busFormStep1.get('busNumber')?.value,
           model: this.busFormStep1.get('model')?.value,
           latitude: this.busFormStep1.get('latitude')?.value,
           longitude: this.busFormStep1.get('longitude')?.value,
-          amenities: this.busFormStep2.get('amenities')?.value,
+          amenities: amenitiesArray,
           imageUrls: uploadedUrls,
           capacity: this.busFormStep3.get('capacity')?.value,
           description: this.busFormStep3.get('description')?.value,

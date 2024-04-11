@@ -134,6 +134,9 @@ export class routes {
   public static get userBusList(): string {
     return this.user + '/bus/list';
   }
+  public static get userBusDetails(): string {
+    return this.user + '/bus/details';
+  }
 
   public static get userIntegration(): string {
     return this.user + '/settings/user-integration';

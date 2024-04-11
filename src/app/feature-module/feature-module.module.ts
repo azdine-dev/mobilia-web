@@ -6,18 +6,15 @@ import { FeatureModuleComponent } from './feature-module.component';
 import { HeaderComponent } from './common/header/header.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { ModalComponent } from './common/modal/modal.component';
-
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
   declarations: [
     FeatureModuleComponent,
     HeaderComponent,
     FooterComponent,
-    ModalComponent
+    ModalComponent,
   ],
-  imports: [
-    CommonModule,
-    FeatureModuleRoutingModule
-  ]
+  imports: [CommonModule, FeatureModuleRoutingModule, SlickCarouselModule],
 })
-export class FeatureModuleModule { }
+export class FeatureModuleModule {}

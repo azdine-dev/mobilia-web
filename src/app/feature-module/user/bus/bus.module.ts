@@ -14,9 +14,21 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BusListComponent } from './bus-list/bus-list.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { BusListingDetailsComponent } from './bus-listing-details/bus-listing-details.component';
 
 @NgModule({
-  declarations: [BusComponent, AddBusSidebarComponent, AddBusComponent],
+  declarations: [
+    BusComponent,
+    AddBusSidebarComponent,
+    AddBusComponent,
+    BusListComponent,
+    BusListingDetailsComponent,
+  ],
   imports: [
     CommonModule,
     SharedModule,
@@ -30,6 +42,10 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatAutocompleteModule,
     MatSnackBarModule,
     MatProgressBarModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    NgbCarousel,
+    SlickCarouselModule,
   ],
 })
 export class BusModule {}

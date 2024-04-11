@@ -1,0 +1,806 @@
+<!-- Breadscrumb Section -->
+<div class="breadcrumb-bar">
+  <div class="container">
+    <div class="row align-items-center text-center">
+      <div class="col-md-12 col-12">
+        <h2 class="breadcrumb-title">{{ selectedBus?.name }}</h2>
+        <nav aria-label="breadcrumb" class="page-breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a [routerLink]="routes.home">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="javascript:void(0);">Bus Details</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              {{ selectedBus?.name }}
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Breadscrumb Section -->
+
+<!-- Detail Page Head-->
+<section class="product-detail-head">
+  <div class="container">
+    <div class="detail-page-head">
+      <div class="detail-headings">
+        <div class="star-rated">
+          <div class="list-rating">
+            <span class="year">{{ selectedBus?.model }}</span>
+            <i class="fas fa-star filled"></i>
+            <i class="fas fa-star filled"></i>
+            <i class="fas fa-star filled"></i>
+            <i class="fas fa-star filled"></i>
+            <i class="fas fa-star filled"></i>
+            <span class="d-inline-block average-list-rating"> 5.0 </span>
+          </div>
+          <div class="camaro-info">
+            <h3>{{ selectedBus?.name }}</h3>
+            <div class="camaro-location">
+              <div class="camaro-location-inner">
+                <i class="feather icon-map-pin me-2"></i>
+
+                <span class="me-2">
+                  <b>Location :</b> Miami St, Destin, FL 32550, USA
+                </span>
+              </div>
+              <div class="camaro-locations-inner">
+                <i class="feather icon-eye me-2"></i>
+
+                <span><b>Views :</b> 250 </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="details-btn">
+        <a href="javascript:void(0)">
+          <img src="assets/img/git-compare.svg" alt="" /> Compare</a
+        >
+        <a href="javascript:void(0)"
+          ><i class="feather icon-heart"></i> Wishlist</a
+        >
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /Detail Page Head-->
+
+<section class="section product-details">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="detail-product">
+          <div class="slider">
+            <ngx-slick-carousel
+              #slickModal="slick-carousel"
+              [config]="slideConfig"
+              data-sizes="50vw"
+              class="detail-bigimg"
+            >
+              @for (data of selectedBus?.images; track data) {
+              <div ngxSlickItem class="product-img">
+                <img [src]="data.imageUrl" alt="Slider" />
+              </div>
+              }
+            </ngx-slick-carousel>
+          </div>
+          <div class="slider">
+            <ngx-slick-carousel
+              #slickModal="slick-carousel"
+              [config]="slideConfig2"
+              data-sizes="50vw"
+              class="slider-nav-thumbnails"
+            >
+              @for (data of selectedBus?.images; track data) {
+              <div ngxSlickItem>
+                <img [src]="data.imageUrl" alt="product image" />
+              </div>
+              }
+            </ngx-slick-carousel>
+          </div>
+        </div>
+        <div class="review-sec extra-service">
+          <div class="review-header">
+            <h4>Extra Service</h4>
+          </div>
+          <span>Baby Seat - $10</span>
+        </div>
+        <!--Listing Features Section-->
+        <div class="review-sec specification-card">
+          <div class="review-header">
+            <h4>Specifications</h4>
+          </div>
+          <div class="card-body">
+            <div class="lisiting-featues">
+              <div class="row">
+                @for(service of selectedBus?.amenities; track service){
+                <div
+                  class="featureslist d-flex align-items-center col-lg-3 col-md-4"
+                >
+                  <div class="feature-img">
+                    <img
+                      src="assets/img/specification/specification-icon-1.svg"
+                      alt=""
+                    />
+                  </div>
+                  <div class="featues-info">
+                    <span>{{ service }} </span>
+                  </div>
+                </div>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="review-sec listing-feature">
+          <div class="review-header">
+            <h4>Bus Features</h4>
+          </div>
+          <div class="listing-description">
+            <div class="row">
+              <div class="col-md-4">
+                <ul>
+                  <li>
+                    <span><i class="fa-solid fa-check-double"></i></span
+                    >Multi-zone A/C
+                  </li>
+                  <li>
+                    <span><i class="fa-solid fa-check-double"></i></span>Heated
+                    front seats
+                  </li>
+                  <li>
+                    <span><i class="fa-solid fa-check-double"></i></span>Andriod
+                    Auto
+                  </li>
+                  <li>
+                    <span><i class="fa-solid fa-check-double"></i></span
+                    >Navigation system
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-4">
+                <ul>
+                  <li>
+                    <span><i class="fa-solid fa-check-double"></i></span>Premium
+                    sound system
+                  </li>
+                  <li>
+                    <span><i class="fa-solid fa-check-double"></i></span
+                    >Bluetooth
+                  </li>
+                  <li>
+                    <span><i class="fa-solid fa-check-double"></i></span>Keyles
+                    Start
+                  </li>
+                  <li>
+                    <span><i class="fa-solid fa-check-double"></i></span>Memory
+                    seat
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-4">
+                <ul>
+                  <li>
+                    <span><i class="fa-solid fa-check-double"></i></span>6
+                    Cylinders
+                  </li>
+                  <li>
+                    <span><i class="fa-solid fa-check-double"></i></span
+                    >Adaptive Cruise Control
+                  </li>
+                  <li>
+                    <span><i class="fa-solid fa-check-double"></i></span
+                    >Intermittent wipers
+                  </li>
+                  <li>
+                    <span><i class="fa-solid fa-check-double"></i></span>4 power
+                    windows
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/Listing Features Section-->
+        <div class="review-sec extra-service mb-0">
+          <div class="review-header">
+            <h4>Description</h4>
+          </div>
+          <div class="description-list">
+            <p>
+              {{ selectedBus?.description }}
+            </p>
+          </div>
+        </div>
+
+        <div class="review-sec extra-service mb-0">
+          <div class="review-header">
+            <h4>Video</h4>
+          </div>
+          <div class="short-video">
+            <iframe
+              src="https://www.youtube.com/embed/ExJZAegsOis"
+              width="100"
+              height="350"
+            ></iframe>
+          </div>
+        </div>
+
+        <div class="review-sec listing-review">
+          <div class="review-header">
+            <h4>Reviews<span class="me-2">(2)</span></h4>
+            <div class="reviewbox-list-rating">
+              <p>
+                <i class="fas fa-star filled"></i>
+                <i class="fas fa-star filled"></i>
+                <i class="fas fa-star filled"></i>
+                <i class="fas fa-star filled"></i>
+                <i class="fas fa-star filled"></i>
+                <span> (5 out of 5)</span>
+              </p>
+            </div>
+          </div>
+          <div class="review-card">
+            <div class="review-header-group">
+              <div class="review-widget-header">
+                <span class="review-widget-img">
+                  <img
+                    src="assets/img/profiles/avatar-01.jpg"
+                    class="img-fluid"
+                    alt=""
+                  />
+                </span>
+                <div class="review-design">
+                  <h6>Johnson</h6>
+                  <p>02 Jan 2023</p>
+                </div>
+              </div>
+              <div class="reviewbox-list-rating">
+                <p>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <span> (5.0)</span>
+                </p>
+              </div>
+            </div>
+            <p>
+              It was popularised in the 1960s with the release of Letraset
+              sheets containing Lorem Ipsum passages, and more recently with
+              desktop publishing software like Aldus PageMaker including
+              versions of Lorem Ipsum.It was popularised in the 1960s
+            </p>
+            <ul class="review-list-rating">
+              <li>
+                quality
+                <p>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                </p>
+              </li>
+              <li>
+                Price
+                <p>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                </p>
+              </li>
+              <li>
+                Comfort
+                <p>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                </p>
+              </li>
+              <li>
+                Driving
+                <p>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                </p>
+              </li>
+            </ul>
+          </div>
+          <div class="review-card">
+            <div class="review-header-group">
+              <div class="review-widget-header">
+                <span class="review-widget-img">
+                  <img
+                    src="assets/img/profiles/avatar-02.jpg"
+                    class="img-fluid"
+                    alt=""
+                  />
+                </span>
+                <div class="review-design">
+                  <h6>Casandra</h6>
+                  <p>02 Jan 2023</p>
+                </div>
+              </div>
+              <div class="reviewbox-list-rating">
+                <p>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <span> (5.0)</span>
+                </p>
+              </div>
+            </div>
+            <p>
+              It was popularised in the 1960s with the release of Letraset
+              sheets containing Lorem Ipsum passages, and more recently with
+              desktop publishing software like Aldus PageMaker including
+              versions of Lorem Ipsum.It was popularised in the 1960s
+            </p>
+            <ul class="review-list-rating">
+              <li>
+                quality
+                <p>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                </p>
+              </li>
+              <li>
+                Price
+                <p>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                </p>
+              </li>
+              <li>
+                Comfort
+                <p>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                </p>
+              </li>
+              <li>
+                Driving
+                <p>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="review-sec leave-reply-form">
+          <div class="review-header">
+            <h4>Leave a Reply</h4>
+          </div>
+          <ul class="review-list-rating mb-3">
+            <li>
+              quality
+              <p>
+                <i class="fas fa-star filled"></i>
+                <i class="fas fa-star filled"></i>
+                <i class="fas fa-star filled"></i>
+                <i class="fas fa-star filled"></i>
+                <i class="fas fa-star filled"></i>
+              </p>
+            </li>
+            <li>
+              Price
+              <p>
+                <i class="fas fa-star filled"></i>
+                <i class="fas fa-star filled"></i>
+                <i class="fas fa-star filled"></i>
+                <i class="fas fa-star filled"></i>
+                <i class="fas fa-star filled"></i>
+              </p>
+            </li>
+            <li>
+              Comfort
+              <p>
+                <i class="fas fa-star filled"></i>
+                <i class="fas fa-star filled"></i>
+                <i class="fas fa-star filled"></i>
+                <i class="fas fa-star filled"></i>
+                <i class="fas fa-star filled"></i>
+              </p>
+            </li>
+            <li>
+              Driving
+              <p>
+                <i class="fas fa-star filled"></i>
+                <i class="fas fa-star filled"></i>
+                <i class="fas fa-star filled"></i>
+                <i class="fas fa-star filled"></i>
+                <i class="fas fa-star filled"></i>
+              </p>
+            </li>
+          </ul>
+          <div class="card-body">
+            <div class="review-list">
+              <ul>
+                <li class="review-box feedbackbox mb-0">
+                  <div class="review-details">
+                    <form class="#">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="input-block">
+                            <label for="fullname"
+                              >Full Name
+                              <span class="text-danger">*</span></label
+                            >
+                            <input type="text" class="form-control" />
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="input-block">
+                            <label for="email"
+                              >Email Address
+                              <span class="text-danger">*</span></label
+                            >
+                            <input type="email" class="form-control" />
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <div class="input-block">
+                            <label for="comments">Comments </label>
+                            <textarea rows="4" class="form-control"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="submit-btn">
+                        <button
+                          class="btn btn-primary submit-review"
+                          type="submit"
+                        >
+                          Submit Review
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 theiaStickySidebar">
+        <div class="stickybar">
+          <div class="review-sec full mt-0">
+            <div class="review-header">
+              <h4>Check Availability</h4>
+            </div>
+            <div class="">
+              <form class="">
+                <ul>
+                  <li class="column-group-main">
+                    <div class="input-block">
+                      <label for="pickup">Pickup Location</label>
+                      <div class="group-img">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="45, 4th Avanue  Mark Street USA"
+                        />
+                      </div>
+                    </div>
+                  </li>
+                  <li class="column-group-main">
+                    <div class="input-block">
+                      <label for="Dropoff">Dropoff Location</label>
+                      <div class="group-img">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="78, 10th street Laplace USA"
+                        />
+                      </div>
+                    </div>
+                  </li>
+                  <li class="column-group-main">
+                    <div class="input-block m-0">
+                      <label for="pickup">Pickup Date</label>
+                    </div>
+                    <div class="input-block-wrapp sidebar-form">
+                      <div class="input-block me-2">
+                        <div class="group-img">
+                          <input
+                            type="text"
+                            class="form-control datetimepicker"
+                            placeholder="04/11/2023"
+                            bsDatepicker
+                          />
+                        </div>
+                      </div>
+                      <div class="input-block">
+                        <div class="group-img">
+                          <input
+                            type="text"
+                            class="form-control timepicker"
+                            placeholder="11:00 AM"
+                            (click)="toggleTimePicker('time1')"
+                            [value]="formatTime(myTime)"
+                          />
+                          <timepicker
+                            [class.d-block]="showTimePicker[0] === 'time1'"
+                            class="custom-timepicker"
+                            [(ngModel)]="myTime"
+                            [ngModelOptions]="{ standalone: true }"
+                          ></timepicker>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="column-group-main">
+                    <div class="input-block m-0">
+                      <label for="return">Return Date</label>
+                    </div>
+                    <div class="input-block-wrapp sidebar-form">
+                      <div class="input-block me-2">
+                        <div class="group-img">
+                          <input
+                            type="text"
+                            class="form-control datetimepicker"
+                            placeholder="04/11/2023"
+                            bsDatepicker
+                          />
+                        </div>
+                      </div>
+                      <div class="input-block">
+                        <div class="group-img">
+                          <input
+                            type="text"
+                            class="form-control timepicker"
+                            placeholder="11:00 AM"
+                            (click)="toggleTimePicker('time2')"
+                            [value]="formatTime(myTime2)"
+                          />
+                          <timepicker
+                            [class.d-block]="showTimePicker[0] === 'time2'"
+                            class="custom-timepicker"
+                            [(ngModel)]="myTime2"
+                            [ngModelOptions]="{ standalone: true }"
+                          ></timepicker>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="column-group-last">
+                    <div class="input-block mb-0">
+                      <div class="search-btn">
+                        <button
+                          class="btn btn-primary check-available w-100"
+                          type="button"
+                          data-bs-toggle="modal"
+                          data-bs-target="#pages_edit"
+                        >
+                          Check Availability
+                        </button>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </form>
+            </div>
+          </div>
+          <div class="review-sec full extra-service mt-0">
+            <div class="review-header">
+              <h4>Listing Owner Details</h4>
+            </div>
+            <div class="owner-detail">
+              <div class="owner-img">
+                <a href="javascript:void(0)"
+                  ><img src="assets/img/profiles/avatar-07.jpg" alt=""
+                /></a>
+              </div>
+              <div class="reviewbox-list-rating">
+                <h5>
+                  <a>{{ selectedBus?.agency?.user?.username }}</a>
+                </h5>
+                <p>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <span> (5.0)</span>
+                </p>
+              </div>
+            </div>
+            <ul class="booking-list">
+              <li>
+                No of Listings
+                <span>05</span>
+              </li>
+              <li>
+                No of Bookings
+                <span>225</span>
+              </li>
+              <li>
+                Verification
+                <h6>Verified</h6>
+              </li>
+            </ul>
+            <div class="message-btn">
+              <a href="javascript:void(0);" class="btn btn-order"
+                >Message to owner</a
+              >
+            </div>
+          </div>
+          <div class="review-sec full share-car mt-0">
+            <div class="review-header">
+              <h4>Share this car</h4>
+            </div>
+            <ul class="nav-social">
+              <li>
+                <a href="javascript:void(0)"
+                  ><i class="fa-brands fa-facebook-f fa-facebook fi-icon"></i
+                ></a>
+              </li>
+              <li>
+                <a href="javascript:void(0)"
+                  ><i class="fab fa-instagram fi-icon"></i
+                ></a>
+              </li>
+              <li>
+                <a href="javascript:void(0)"
+                  ><i class="fab fa-behance fi-icon"></i
+                ></a>
+              </li>
+              <li>
+                <a href="javascript:void(0)"
+                  ><i class="fa-brands fa-pinterest-p fi-icon"></i
+                ></a>
+              </li>
+              <li>
+                <a href="javascript:void(0)"
+                  ><i class="fab fa-twitter fi-icon"></i>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0)"
+                  ><i class="fab fa-linkedin fi-icon"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+          <div class="review-sec full share-car mt-0 mb-0">
+            <div class="review-header">
+              <h4>View Location</h4>
+            </div>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6509170.989457427!2d-123.80081967108484!3d37.192957227641294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb9fe5f285e3d%3A0x8b5109a227086f55!2sCalifornia%2C%20USA!5e0!3m2!1sen!2sin!4v1669181581381!5m2!1sen!2sin"
+              class="iframe-video"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div
+  class="modal custom-modal fade check-availability-modal"
+  id="pages_edit"
+  role="dialog"
+>
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="form-header text-start mb-0">
+          <h4 class="mb-0 text-dark fw-bold">Availability Details</h4>
+        </div>
+        <button
+          type="button"
+          class="close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span class="align-center" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-12 col-md-12">
+            <div class="available-for-ride">
+              <p>
+                <i class="fa-regular fa-circle-check"></i>Chevrolet Camaro is
+                available for a ride
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12">
+            <div class="row booking-info">
+              <div class="col-md-4 pickup-address">
+                <h5>Pickup</h5>
+                <p>45, 4th Avanue Mark Street USA</p>
+                <span>Date & time : 11 Jan 2023</span>
+              </div>
+              <div class="col-md-4 drop-address">
+                <h5>Drop Off</h5>
+                <p>78, 10th street Laplace USA</p>
+                <span>Date & time : 11 Jan 2023</span>
+              </div>
+              <div class="col-md-4 booking-amount">
+                <h5>Booking Amount</h5>
+                <h6><span>$300 </span> /day</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12">
+            <div class="booking-info seat-select">
+              <h6>Extra Service</h6>
+              <label class="custom_check">
+                <input type="checkbox" name="rememberme" class="rememberme" />
+                <span class="checkmark"></span>
+                Baby Seat - <span class="ms-2">$10</span>
+              </label>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="booking-info pay-amount">
+              <h6>Deposit Option</h6>
+              <div class="radio radio-btn">
+                <label> <input type="radio" name="radio" /> Pay Deposit </label>
+              </div>
+              <div class="radio">
+                <label> <input type="radio" name="radio" /> Full Amount </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6"></div>
+          <div class="col-md-6">
+            <div class="booking-info service-tax">
+              <ul>
+                <li>Booking Price <span>$300</span></li>
+                <li>Extra Service <span>$10</span></li>
+                <li>Tax <span>$5</span></li>
+              </ul>
+            </div>
+            <div class="grand-total">
+              <h5>Grand Total</h5>
+              <span>$315</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a
+          [routerLink]="routes.bookingList"
+          class="btn btn-back"
+          data-bs-dismiss="modal"
+          >Go to Details<i class="fa-solid fa-arrow-right"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Modal -->
